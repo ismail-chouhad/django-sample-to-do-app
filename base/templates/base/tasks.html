@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %} {% block content %}
+
+<div class="header-bar">
+  <a href="{% url 'logout' %}" style="position: relative">log out</a>
+  <div class="tasks-bar">
+    <h1>Hello {{ request.user|title }}</h1>
+    <h3 style="">
+      You have <i>{{count}}</i> incomplete task{{ count|pluralize:"s" }}
+    </h3>
+  </div>
+</div>
+<a class="add-new" href="{% url 'create' %}">Add new</a>
+<table class="tasks-table">
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+  {% for task in tasks %}
+  <tr class="tasks-content">
+    <td style="min-width: 230px; font-weight: 700">{{ task.title }}</td>
+    <td class="actions">
+      <a href="details/{{task.id}}">View</a>
+      <a href="{% url 'update' task.id %}">Update</a>
+      <a href="{% url 'delete' task.id %}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock content %}

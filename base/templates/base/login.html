@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %} {% block content %}
+
+<div class="header-bar">
+  <h1 style="display: flex; align-self: center">Log-in</h1>
+</div>
+<form
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  "
+  method="POST"
+>
+  {% csrf_token %}
+  <label for="username">Username:</label>
+  <input type="text" name="username" required />
+  <br />
+  <label for="password">Password:</label>
+  <input type="password" name="password" required />
+  <br />
+  <div style="display: flex; justify-content: center">
+    <input class="button-auth" type="submit" value="Login" />
+  </div>
+  <div class="footer-auth">
+    <h5>
+      Don't have an account yet ? &nbsp<a href="{% url 'register' %}"
+        >Register here</a
+      >
+    </h5>
+  </div>
+</form>
+
+{% endblock content %}

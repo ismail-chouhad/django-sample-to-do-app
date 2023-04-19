@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %} {% block content %}
+
+<div class="header-bar">
+  <h1 style="display: flex; align-self: center">Register</h1>
+  <h5 style="display: flex; align-self: center; margin-top: -5px">
+    Let's help you meet up your tasks
+  </h5>
+</div>
+<form
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  "
+  method="POST"
+>
+  {% csrf_token %}
+  <label for="username">Username:</label>
+  <input type="text" name="username" required />
+  <br />
+  <label for="email">Email:</label>
+  <input type="email" name="email" required />
+  <br />
+  <label for="password">Password:</label>
+  <input type="password" name="password" required />
+  <br />
+  <label for="password2">Confirme Password:</label>
+  <input type="password" name="password2" required />
+  <br />
+  <div style="display: flex; justify-content: center">
+    <input class="button-auth" type="submit" value="Register" />
+  </div>
+  <div class="footer-auth">
+    <h5>
+      Already have an account ? &nbsp<a href="{% url 'login' %}">Login</a>
+    </h5>
+  </div>
+</form>
+
+{% endblock content %}
